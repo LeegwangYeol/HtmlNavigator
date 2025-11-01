@@ -1,3 +1,7 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+import time
+
 def test_brave_with_fixed_driver():
     try:
         print("프로그램 시작")
@@ -13,11 +17,12 @@ def test_brave_with_fixed_driver():
         
         # webdriver-manager 대신 간단한 방식 사용
         driver = webdriver.Chrome(options=options)
-        
+    
         print("구글 접속 시도...")
-        driver.get("https://www.google.com")
+        driver.get("https://www.perplexity.ai/")
         print(f"현재 URL: {driver.current_url}")
         print(f"페이지 제목: {driver.title}")
+        time.sleep(1000)
         return True
         
     except Exception as e:
@@ -27,3 +32,10 @@ def test_brave_with_fixed_driver():
         if 'driver' in locals():
             driver.quit()
             print("드라이버 종료")
+
+
+            
+# 파일의 맨 아래에 다음 코드를 추가
+if __name__ == "__main__":
+   
+    test_brave_with_fixed_driver()
