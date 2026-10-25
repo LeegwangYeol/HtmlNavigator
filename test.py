@@ -42,19 +42,6 @@ import random
 def get_perplexity_answer(prompt: str):
     driver = None
     try:
-        # 기존 옵션 설정
-        options = uc.ChromeOptions()
-        options.binary_location = "C:/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe"
-        options.add_argument("--disable-blink-features=AutomationControlled")
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
-        
-        # 드라이버 설정
-        driver = uc.Chrome(
-            options=options,
-            use_subprocess=False,
-            service_log_path='chromedriver.log'  # 로그 파일 지정
-        )
         # 1. 브라우저 설정 (Brave 브라우저 경로 지정 및 감지 회피 옵션)
         options = uc.ChromeOptions()
         
@@ -65,13 +52,16 @@ def get_perplexity_answer(prompt: str):
         
         # 자동화 탐지를 회피하기 위한 옵션들
         options.add_argument("--disable-blink-features=AutomationControlled")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_experimental_option('useAutomationExtension', False)
         
         # 2. Undetected ChromeDriver 실행
         driver = uc.Chrome(
             options=options,
-            use_subprocess=False # 메모리 사용량 감소에 도움
+            use_subprocess=False, # 메모리 사용량 감소에 도움
+            service_log_path='chromedriver.log'  # 로그 파일 지정
         )
         
         # navigator.webdriver 속성을 undefined로 변경하여 탐지 회피
