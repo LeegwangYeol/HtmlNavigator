@@ -70,4 +70,7 @@ def test_brave_connection():
 if __name__ == "__main__":
     print("=== Brave 브라우저 연결 테스트 시작 ===")
     test_brave_connection()
-    input("\n테스트 완료. 결과를 확인하시고 엔터를 누르세요...")
+    try:
+        input("\n테스트 완료. 결과를 확인하시고 엔터를 누르세요...")
+    except EOFError:
+        pass
