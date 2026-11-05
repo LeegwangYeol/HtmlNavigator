@@ -49,13 +49,13 @@ def test_brave_connection():
         if "perplexity" in driver.title.lower():
             print("✓ Perplexity 접속 성공")
             print(f"페이지 제목: {driver.title}")
+            return True
         else:
             print("✗ Perplexity 접속 실패 - 차단된 것으로 보입니다.")
             print(f"실제 페이지 제목: {driver.title}")
             print("페이지 소스 일부:")
             print(driver.page_source[:500])  # 처음 500자만 출력
-            
-        return True
+            return False
         
     except Exception as e:
         print(f"✗ Perplexity 접속 중 오류: {str(e)}")
