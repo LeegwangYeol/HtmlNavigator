@@ -42,19 +42,6 @@ import random
 def get_perplexity_answer(prompt: str):
     driver = None
     try:
-        # 기존 옵션 설정
-        options = uc.ChromeOptions()
-        options.binary_location = "C:/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe"
-        options.add_argument("--disable-blink-features=AutomationControlled")
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
-        
-        # 드라이버 설정
-        driver = uc.Chrome(
-            options=options,
-            use_subprocess=False,
-            service_log_path='chromedriver.log'  # 로그 파일 지정
-        )
         # 1. 브라우저 설정 (Brave 브라우저 경로 지정 및 감지 회피 옵션)
         options = uc.ChromeOptions()
         
