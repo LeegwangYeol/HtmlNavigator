@@ -31,7 +31,7 @@ class ProgrammingBot:
             self.save_and_update_project(task_result)
             
         except Exception as e:
-            self.log_error(f"Cycle execution failed: {e}")
+            print(f"Cycle execution failed: {e}")
 import undetected_chromedriver as uc
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
